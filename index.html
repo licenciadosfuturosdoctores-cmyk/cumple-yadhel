@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4a0a17">
+<title>El cumpleaños de Yadhel</title>
+<meta property="og:title" content="Estás invitado/a · Cumpleaños de Yadhel">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#6e0f20;--wine-d:#3a0610;--wine-l:#a3182f;--cream:#f4ead8;--ink:#3a0610;--blue:#2f45c4}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--cream);background:var(--wine-d);font-size:17px;line-height:1.5;text-align:center;overflow-x:hidden}
+body.lock{overflow:hidden;height:100%}
+.serif{font-family:'Playfair Display',Georgia,serif}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s}
+.rv.in{opacity:1;transform:none}
+
+/* fondo fijo rojo para secciones */
+#bgfix{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(40,4,12,.55),rgba(40,4,12,.55)),url(fondo-rojo.jpg) center/cover}
+
+/* ===== PORTADA / SOBRE ===== */
+#cover{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:linear-gradient(rgba(30,3,9,.45),rgba(30,3,9,.65)),url(fondo-rojo.jpg) center/cover;transition:opacity 1s .9s,visibility 0s 1.9s;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+#cover.gone{opacity:0;visibility:hidden}
+#cover .eyebrow{letter-spacing:.4em;font-size:12px;text-transform:uppercase;opacity:.85}
+#cover h1{font-size:34px;line-height:1.1;padding:0 30px;font-weight:700}
+.env{position:relative;width:min(310px,80vw);aspect-ratio:3/2;perspective:900px;cursor:pointer;margin-top:10px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+.env .back{position:absolute;inset:0;background:#d9c7a5;border-radius:4px}
+.env .card{position:absolute;left:7%;right:7%;top:5%;bottom:5%;background:var(--wine);border:1px solid #d9b98a;border-radius:3px;transition:transform .9s .35s;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.25em;color:#e8cfa0;text-transform:uppercase}
+.env .front{position:absolute;inset:0;background:var(--cream);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);filter:drop-shadow(0 -2px 3px rgba(0,0,0,.18))}
+.env .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#e7d8bb;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s,z-index 0s .35s;z-index:3}
+.seal{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;z-index:4;background:radial-gradient(circle at 35% 30%,#d4283f,#7d0f20 70%);box-shadow:0 3px 8px rgba(0,0,0,.45),inset 0 0 0 3px rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:28px;font-style:italic;color:#f4ead8;transition:opacity .3s;animation:beat 2s infinite}
+@keyframes beat{50%{transform:scale(1.08)}}
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+.env.open .seal{opacity:0;animation:none}
+.env.open .card{transform:translateY(-40%)}
+.hint{font-size:14px;letter-spacing:.2em;text-transform:uppercase;animation:p 1.8s infinite}
+@keyframes p{50%{opacity:.35}}
+
+/* ===== HERO (collage claro) ===== */
+#hero{min-height:100svh;display:flex;align-items:center;justify-content:center;background:url(fondo-concreto.jpg) center/cover;color:var(--ink);padding:40px 0;position:relative}
+#hero .box{width:min(66vw,290px)}
+#hero small{display:block;letter-spacing:.3em;font-size:11px;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+#hero h2{font-size:clamp(23px,6.8vw,30px);line-height:1.15;text-transform:uppercase;font-weight:700}
+#hero p{font-style:italic;margin-top:14px;font-size:20px}
+.cue{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));left:0;right:0;font-size:12px;letter-spacing:.3em;text-transform:uppercase;animation:p 2s infinite}
+
+/* ===== TARJETAS ===== */
+section.s{padding:44px 22px;max-width:480px;margin:auto}
+.c{background:rgba(244,234,216,.94);color:var(--ink);border-radius:22px;padding:28px 22px;box-shadow:0 14px 34px rgba(0,0,0,.35);margin-bottom:18px}
+.c .ic{width:46px;height:46px;border-radius:50%;background:var(--wine);color:var(--cream);display:flex;align-items:center;justify-content:center;margin:-52px auto 12px;font-size:21px;box-shadow:0 6px 14px rgba(0,0,0,.3)}
+.c h3{font-size:22px;margin-bottom:6px}
+.c p{font-size:17px}
+.big{font-size:23px;font-weight:700;margin:2px 0}
+.pill{display:inline-block;margin-top:16px;padding:13px 26px;border-radius:40px;background:linear-gradient(135deg,var(--wine-l),var(--wine));color:var(--cream);text-decoration:none;font:700 14px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;border:0;box-shadow:0 8px 18px rgba(110,15,32,.4)}
+.c+.c,.c{margin-top:34px}
+
+/* ===== CUENTA REGRESIVA (video reloj) ===== */
+#clock{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000}
+#clock video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#clock::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(30,3,9,.15),rgba(30,3,9,.55))}
+#clock .in{position:relative;z-index:2;padding:0 14px}
+#clock h3{letter-spacing:.4em;text-transform:uppercase;font-size:13px;margin-bottom:14px;text-shadow:0 2px 8px #000}
+.cd{display:flex;justify-content:center;gap:8px}
+.cd div{width:72px;padding:14px 0 10px;border-radius:16px;background:rgba(40,4,12,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(244,234,216,.25)}
+.cd b{display:block;font:700 30px/1 'Playfair Display',serif}
+.cd span{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin-top:6px;opacity:.85}
+#clock p{margin-top:16px;font-style:italic;text-shadow:0 2px 8px #000}
+
+/* ===== RSVP ===== */
+label.l{display:block;text-align:left;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin:18px 0 7px;color:var(--wine)}
+input[type=text],textarea{width:100%;font:inherit;font-size:17px;padding:13px 14px;border:1.5px solid #d6c3a0;border-radius:14px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid var(--wine-l);border-color:transparent}
+.opts{display:flex;gap:10px}
+.opts label{flex:1}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:block;padding:14px 6px;border:1.5px solid #d6c3a0;border-radius:14px;background:#fff;font-weight:700;transition:.2s}
+.opts input:checked+span{background:var(--wine);color:var(--cream);border-color:var(--wine);transform:scale(1.03)}
+.send{width:100%;margin-top:22px;border:0;cursor:pointer}
+.send:disabled{opacity:.6}
+#thanks{display:none;padding:10px 0}
+#thanks .t{font-size:34px;font-weight:700}
+.err{color:#a01d1d;font-size:15px;margin-top:10px;display:none}
+
+/* ===== CIERRE ===== */
+#end{min-height:70svh;display:flex;align-items:center;justify-content:center;background:url(fondo-concreto.jpg) center 20%/cover;color:var(--ink);padding:50px 24px calc(50px + env(safe-area-inset-bottom))}
+#end p{font-size:22px;font-style:italic;max-width:280px;line-height:1.3}
+#end b{display:block;margin-top:10px;font-size:34px;font-style:normal}
+
+/* música */
+#mus{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,234,216,.4);background:rgba(40,4,12,.7);color:var(--cream);font-size:18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none}
+</style>
+</head>
+<body class="lock">
+<div id="bgfix"></div>
+
+<!-- PORTADA -->
+<div id="cover">
+  <div class="eyebrow">Te invitamos</div>
+  <h1 class="serif">Hay motivos<br>para brindar</h1>
+  <div class="env" id="env" role="button" aria-label="Abrir invitación">
+    <div class="back"></div><div class="card serif">Yadhel</div><div class="front"></div><div class="flap"></div>
+    <div class="seal serif">Y</div>
+  </div>
+  <div class="hint" id="hint">Toca el sello para abrir</div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <header id="hero">
+    <div class="box rv">
+      <small>Hoy se brinda</small>
+      <h2 class="serif">El cumpleaños de la mejor chica que pudiste conocer.</h2>
+      <p class="serif">Y sí, estás invitado/a.</p>
+    </div>
+    <div class="cue">Desliza ↓</div>
+  </header>
+
+  <section class="s">
+    <div class="c rv"><div class="ic">🍷</div>
+      <h3 class="serif">Hay motivos para brindar y este es uno de ellos.</h3>
+      <p>Te espero para compartir una tarde de vino, quesitos, juegos, conversaciones y alguna que otra anécdota.</p>
+    </div>
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section id="clock">
+    <video id="vid" muted loop playsinline preload="auto" poster="fondo-rojo.jpg"><source src="botellas.mp4" type="video/mp4"></video>
+    <div class="in rv">
+      <h3>Faltan</h3>
+      <div class="cd">
+        <div><b id="cD">00</b><span>días</span></div><div><b id="cH">00</b><span>horas</span></div><div><b id="cM">00</b><span>min</span></div><div><b id="cS">00</b><span>seg</span></div>
+      </div>
+      <p class="serif">para brindar juntos</p>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="c rv"><div class="ic">📅</div>
+      <h3 class="serif">Fecha y hora</h3>
+      <div class="big serif">Domingo 22 de noviembre</div>
+      <div class="big serif">3:00 p. m.</div>
+      <p style="margin-top:6px">Una reunión privada en casa.</p>
+      <a class="pill" id="ics" download="cumple-yadhel.ics">Agregar al calendario</a>
+    </div>
+    <div class="c rv"><div class="ic">📍</div>
+      <h3 class="serif">Ubicación</h3>
+      <p>Te espero en casa.</p>
+      <a class="pill" id="map" target="_blank" rel="noopener">Ver ubicación</a>
+    </div>
+    <div class="c rv"><div class="ic">👗</div>
+      <h3 class="serif">Dress code</h3>
+      <p>Casual, pero con estilo.</p>
+    </div>
+    <div class="c rv"><div class="ic">✉️</div>
+      <h3 class="serif">Confirma tu asistencia</h3>
+      <p>La invitación es personal. Confirma para reservarte un lugar en esta importante celebración.</p>
+      <form id="form" autocomplete="off">
+        <div id="fields">
+          <label class="l" for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Nombre y apellido">
+          <label class="l">¿Asistirás?</label>
+          <div class="opts">
+            <label><input type="radio" name="asistencia" value="Sí" required><span>Sí 🥂</span></label>
+            <label><input type="radio" name="asistencia" value="No"><span>No</span></label>
+          </div>
+          <label class="l" for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="2" placeholder="Alergias, un recado, lo que quieras"></textarea>
+          <button class="pill send" id="send" type="submit">Confirmar</button>
+          <div class="err" id="err">No se pudo enviar. Revisa tu conexión e inténtalo otra vez.</div>
+        </div>
+        <div id="thanks"><div class="t serif">¡Gracias!</div><p id="tt"></p></div>
+      </form>
+    </div>
+  </section>
+
+  <footer id="end"><p class="serif rv">Con cariño y un poquito de protagonismo,<b>Yadhel</b></p></footer>
+</main>
+
+<button id="mus" aria-label="Música">♪</button>
+<audio id="bgm" src="musica.mp3" loop preload="auto"></audio>
+
+<script>
+/* ===== EDITA AQUÍ ===== */
+const CONFIG={
+  fechaISO:"2026-11-22T15:00:00-05:00",
+  mapa:"https://maps.app.goo.gl/YWh6gsik8KZqtKSV9",
+  /* Pega aquí la URL de tu Apps Script (termina en /exec) para que las respuestas lleguen a tu hoja */
+  SHEET_URL:""
+};
+/* ======================== */
+const $=id=>document.getElementById(id);
+$('map').href=CONFIG.mapa;
+
+/* Abrir sobre + música */
+const bgm=$('bgm'),mus=$('mus'),vid=$('vid');
+$('env').addEventListener('click',()=>{
+  $('env').classList.add('open');$('hint').style.visibility='hidden';
+  bgm.volume=.7;bgm.play().then(()=>{mus.style.display='block'}).catch(()=>{mus.style.display='block';mus.textContent='♪ ✕'});
+  vid.play().catch(()=>{});
+  setTimeout(()=>{$('cover').classList.add('gone');document.body.classList.remove('lock');window.scrollTo(0,0)},1500);
+},{once:true});
+mus.addEventListener('click',()=>{if(bgm.paused){bgm.play();mus.textContent='♪'}else{bgm.pause();mus.textContent='♪ ✕'}});
+
+/* Video solo cuando se ve */
+new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?vid.play().catch(()=>{}):vid.pause()}),{threshold:.1}).observe($('clock'));
+
+/* Aparecer al deslizar */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* Cuenta regresiva */
+const p2=n=>String(n).padStart(2,'0');
+function tick(){const d=Math.max(0,new Date(CONFIG.fechaISO)-new Date());
+  $('cD').textContent=p2(Math.floor(d/864e5));$('cH').textContent=p2(Math.floor(d/36e5)%24);
+  $('cM').textContent=p2(Math.floor(d/6e4)%60);$('cS').textContent=p2(Math.floor(d/1e3)%60);}
+tick();setInterval(tick,1000);
+
+/* Calendario (.ics) */
+const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Cumple Yadhel//ES','BEGIN:VEVENT','UID:cumple-yadhel-20261122@invitacion',
+'DTSTAMP:20261117T000000Z','DTSTART;TZID=America/Lima:20261122T150000','DTEND;TZID=America/Lima:20261122T200000',
+'SUMMARY:Cumpleaños de Yadhel 🍷','DESCRIPTION:Hay motivos para brindar. Casual, pero con estilo.','LOCATION:'+CONFIG.mapa,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+$('ics').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+
+/* Confirmación → hoja de cálculo */
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();const f=e.target,b=$('send');
+  const data=new URLSearchParams({nombre:f.nombre.value.trim(),asistencia:f.asistencia.value,mensaje:f.mensaje.value.trim()});
+  b.disabled=true;b.textContent='Enviando…';$('err').style.display='none';
+  try{
+    if(CONFIG.SHEET_URL){await fetch(CONFIG.SHEET_URL,{method:'POST',mode:'no-cors',body:data})}
+    else{console.log('Modo prueba (sin SHEET_URL):',Object.fromEntries(data));await new Promise(r=>setTimeout(r,600))}
+    $('fields').style.display='none';$('thanks').style.display='block';
+    $('tt').textContent=f.asistencia.value==='Sí'?'Tu lugar quedó reservado. ¡Brindamos pronto!':'Lástima que no puedas, gracias por avisar. ¡Un abrazo!';
+  }catch(_){$('err').style.display='block';b.disabled=false;b.textContent='Confirmar'}
+});
+</script>
+</body>
+</html>
